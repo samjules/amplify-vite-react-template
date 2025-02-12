@@ -1,18 +1,16 @@
-import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import { a, defineData } from "@aws-amplify/backend";
 
 const schema = a.schema({
-  Todo: a.model({
-    content: a.string(),
-  }).authorization(allow => [allow.owner()]),
+  Aircraft: a.model({
+    Model: a.string(),
+    TailNumber: a.string(),
+    ImageUrl: a.string()
+  }).authorization((allow) => [allow.owner()]), // Allow only the owner
 });
-
-export type Schema = ClientSchema<typeof schema>;
 
 export const data = defineData({
   schema,
   authorizationModes: {
-    // This tells the data client in your app (generateClient())
-    // to sign API requests with the user authentication token.
-    defaultAuthorizationMode: 'userPool',
+    defaultAuthorizationMode: "apiKey", // Use API key
   },
 });
