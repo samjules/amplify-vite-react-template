@@ -11,6 +11,6 @@ const schema = a.schema({
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "apiKey", // Use API key
+    defaultAuthorizationMode: "userPool", // Use API key
   },
 });
